@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title></title>
+   <script src="C:/AngularJs/angular-1.6.1/angular.js"></script>
+   <script src="C:/AngularJs/angular-1.6.1/angular-route.js"></script>
+ </head>
+<body>
+<h2> angularJs sample application</h2>
+ <div ng-app = "mainApp">
+    <p><a href= "#home">Home</a></p>
+    <p><a href= "#contacts">contact Us</a></p>
+    <div ng-view></div>
+ </div>
+
+ 
+ <script>
+ var mainApp = angular.module("mainApp", ['ngRoute']);
+
+mainApp.config(['$routeProvider', function ($routeProvider){
+	  $routeProvider.
+            
+            when('/', {
+               templateUrl: 'C:/AngularJs/main.html',
+               controller: 'mainController'
+            }).
+   
+			when('/contacts', {
+				   templateUrl: 'C:/AngularJs/contacts.html',
+				   controller: 'contactsController'
+			}).
+   
+			otherwise({
+	   redirectTo: '/'
+   });
+}]);
+
+mainApp.controller("mainController", function($scope){
+	$scope.message=" Welcome to Angularjs tutorial";
+});
+mainApp.controller("contactsController", function($scope){
+	$scope.message = "you can contact us at contact@tutorial.com";
+	
+});	
+ </script>
+ </body>
+</html>
